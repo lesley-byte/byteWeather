@@ -2,7 +2,39 @@
 header {
   max-width: 99% !important;
 }
-
+nav {
+  background: rgb(72, 95, 202);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(72, 95, 202, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(7, 2, 89, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(72, 95, 202, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(7, 2, 89, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(72, 95, 202, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(7, 2, 89, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#485fca",endColorstr="#070259",GradientType=1);
+}
+.custom-btn-primary {
+  background-color: #667ad3;
+  border-color: #667ad3;
+}
+.custom-btn-primary:hover {
+  background-color: #485fca;
+  border-color: #485fca;
+}
+.custom-bg-dark {
+  background-color: #040133 !important;
+}
 /* media queries at 900px .card-deck changes to column and hide btn-secondary */
 @media (max-width: 900px) {
   main {
