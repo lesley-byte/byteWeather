@@ -28,6 +28,11 @@ nav {
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#485fca",endColorstr="#070259",GradientType=1);
 }
+
+section {
+  max-width: 95% !important;
+}
+
 .custom-btn-primary {
   background-color: #667ad3;
   border-color: #667ad3;
@@ -67,5 +72,9 @@ nav {
   }
   .btn-secondary {
     display: none !important;
+  }
+  .custom-navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 }
