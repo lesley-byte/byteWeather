@@ -4,7 +4,7 @@ header {
 }
 label {
   font-size: 1.5em;
-  font-weight: 600;
+  font-weight: 900;
 }
 nav {
   background: rgb(72, 95, 202);
@@ -32,6 +32,10 @@ nav {
 section {
   max-width: 95% !important;
 }
+h4 {
+  font-size: 1.5em;
+  font-weight: 900;
+}
 
 .custom-btn-primary {
   background-color: #667ad3;
@@ -51,15 +55,15 @@ section {
 }
 
 .custom-navbar-brand {
-  font-weight: bold;
+  font-weight: 900;
   font-size: 2rem;
 }
 .custom-city-card {
-  font-weight: 600;
+  font-weight: 900;
   font-size: 1.7rem;
 }
 .custom-card-header {
-  font-weight: 600;
+  font-weight: 900;
   font-size: 1.2rem;
 }
 /* media queries at 900px .card-deck changes to column and hide btn-secondary */
