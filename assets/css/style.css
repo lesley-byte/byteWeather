@@ -32,8 +32,18 @@ nav {
   background-color: #485fca;
   border-color: #485fca;
 }
+.custom-btn-secondary {
+  background-color: #969696;
+  border-color: #969696;
+  color: black;
+}
 .custom-bg-dark {
   background-color: #040133 !important;
+}
+
+.custom-navbar-brand {
+  font-weight: bold;
+  font-size: 2rem;
 }
 /* media queries at 900px .card-deck changes to column and hide btn-secondary */
 @media (max-width: 900px) {
