@@ -2,3 +2,16 @@
 header {
   max-width: 99% !important;
 }
+
+/* media queries at 900px .card-deck changes to column and hide btn-secondary */
+@media (max-width: 900px) {
+  main {
+    display: block !important;
+  }
+  .card-deck {
+    display: block !important;
+  }
+  .btn-secondary {
+    display: none !important;
+  }
+}
