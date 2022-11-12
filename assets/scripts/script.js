@@ -13,6 +13,74 @@ console.log("I am attached to index.html");
 // the future humidity are futureHumidity1 through futureHumidity5
 // the future icons are futureIcon1 through futureIcon5
 // the future wind speeds are futureWindSpeed1 through futureWindSpeed5
+
+// get local storage object if it exists if it doesn't exist then create it and use ctyBtn1 through cityBtn8 as the keys with a value of ""
+// write the values to the DOM using writeCityBtns
+// if the value is "" then write "City" to the DOM
+function writeCityBtnsFromLocalStorage() {
+  // get local storage object
+  var cityBtns = JSON.parse(localStorage.getItem("cityBtns"));
+  console.log(cityBtns);
+  if (cityBtns === null) {
+    console.log("cityBtns is null so it was created on line 25");
+    cityBtns = {
+      cityBtn1: "",
+      cityBtn2: "",
+      cityBtn3: "",
+      cityBtn4: "",
+      cityBtn5: "",
+      cityBtn6: "",
+      cityBtn7: "",
+      cityBtn8: "",
+    };
+  } else {
+    // write the values to the DOM
+    $("#cityBtn1").text(cityBtns.cityBtn1);
+    $("#cityBtn2").text(cityBtns.cityBtn2);
+    $("#cityBtn3").text(cityBtns.cityBtn3);
+    $("#cityBtn4").text(cityBtns.cityBtn4);
+    $("#cityBtn5").text(cityBtns.cityBtn5);
+    $("#cityBtn6").text(cityBtns.cityBtn6);
+    $("#cityBtn7").text(cityBtns.cityBtn7);
+    $("#cityBtn8").text(cityBtns.cityBtn8);
+  }
+  // if the value is "" then write "City" to the DOM
+  if (cityBtns.cityBtn1 === "") {
+    $("#cityBtn1").hide();
+    console.log("cityBtn1 is empty");
+  }
+  if (cityBtns.cityBtn2 === "") {
+    $("#cityBtn2").hide();
+    console.log("cityBtn2 is empty");
+  }
+  if (cityBtns.cityBtn3 === "") {
+    $("#cityBtn3").hide();
+    console.log("cityBtn3 is empty");
+  }
+  if (cityBtns.cityBtn4 === "") {
+    $("#cityBtn4").hide();
+    console.log("cityBtn4 is empty");
+  }
+  if (cityBtns.cityBtn5 === "") {
+    $("#cityBtn5").hide();
+    console.log("cityBtn5 is empty");
+  }
+  if (cityBtns.cityBtn6 === "") {
+    $("#cityBtn6").hide();
+    console.log("cityBtn6 is empty");
+  }
+  if (cityBtns.cityBtn7 === "") {
+    $("#cityBtn7").hide();
+    console.log("cityBtn7 is empty");
+  }
+  if (cityBtns.cityBtn8 === "") {
+    $("#cityBtn8").hide();
+    console.log("cityBtn8 is empty");
+  }
+}
+
+writeCityBtnsFromLocalStorage();
+
 var today = dayjs().format("MM/DD/YYYY");
 var tomorrow = dayjs().add(1, "day").format("MM/DD/YYYY");
 var dayAfterTomorrow = dayjs().add(2, "day").format("MM/DD/YYYY");
@@ -85,6 +153,81 @@ $("#searchBtn").on("click", function () {
         var chosenCity = data[0].name;
         var chosenState = data[0].state;
         var chosenCountry = data[0].country;
+
+        // write the chosen city to the first non-empty cityBtn in local storage
+        // if all cityBtns are full then overwrite the first cityBtn
+        // write the chosen city to the DOM
+        function writeCityBtnsToLocalStorage(chosenCity) {
+          // get local storage object
+          var cityBtns = JSON.parse(localStorage.getItem("cityBtns"));
+          console.log(cityBtns);
+          // if the object is null then create the object
+          if (cityBtns === null) {
+            console.log("cityBtns was null so it was created on line 165");
+            cityBtns = {
+              cityBtn1: "",
+              cityBtn2: "",
+              cityBtn3: "",
+              cityBtn4: "",
+              cityBtn5: "",
+              cityBtn6: "",
+              cityBtn7: "",
+              cityBtn8: "",
+            };
+          }
+          console.log(chosenCity + " is supposed to be written to the buttons");
+          // if the first cityBtn is empty then write the chosen city to the first cityBtn
+          if (cityBtns.cityBtn1 === "") {
+            cityBtns.cityBtn1 = chosenCity;
+            $("#cityBtn1").show();
+            $("#cityBtn1").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn2 === "") {
+            cityBtns.cityBtn2 = chosenCity;
+            $("#cityBtn2").show();
+            $("#cityBtn2").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn3 === "") {
+            cityBtns.cityBtn3 = chosenCity;
+            $("#cityBtn3").show();
+            $("#cityBtn3").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn4 === "") {
+            cityBtns.cityBtn4 = chosenCity;
+            $("#cityBtn4").show();
+            $("#cityBtn4").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn5 === "") {
+            cityBtns.cityBtn5 = chosenCity;
+            $("#cityBtn5").show();
+            $("#cityBtn5").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn6 === "") {
+            cityBtns.cityBtn6 = chosenCity;
+            $("#cityBtn6").show();
+            $("#cityBtn6").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn7 === "") {
+            cityBtns.cityBtn7 = chosenCity;
+            $("#cityBtn7").show();
+            $("#cityBtn7").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else if (cityBtns.cityBtn8 === "") {
+            cityBtns.cityBtn8 = chosenCity;
+            $("#cityBtn8").show();
+            $("#cityBtn8").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          } else {
+            cityBtns.cityBtn1 = chosenCity;
+            $("#cityBtn1").show();
+            $("#cityBtn1").text(chosenCity);
+            localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
+          }
+        }
+
+        // write the cityBtns from local storage to the DOM
+        writeCityBtnsToLocalStorage(chosenCity);
+
         $("#cityFocus").text(
           chosenCity + ", " + chosenState + ", " + chosenCountry
         );
@@ -124,12 +267,13 @@ $("#searchBtn").on("click", function () {
             var futureIcon2 = data.daily[1].weather[0].description;
             var futureIcon3 = data.daily[2].weather[0].description;
             var futureIcon4 = data.daily[3].weather[0].description;
+            var futureIcon5 = data.daily[4].weather[0].description;
             $("#currentIcon").text(currentIcon);
-            $("#futureIcon1").text(currentIcon);
-            $("#futureIcon2").text(futureIcon1);
-            $("#futureIcon3").text(futureIcon2);
-            $("#futureIcon4").text(futureIcon3);
-            $("#futureIcon5").text(futureIcon4);
+            $("#futureIcon1").text(futureIcon1);
+            $("#futureIcon2").text(futureIcon2);
+            $("#futureIcon3").text(futureIcon3);
+            $("#futureIcon4").text(futureIcon4);
+            $("#futureIcon5").text(futureIcon5);
 
             // console.log(data.daily[0]);
             // console.log(data.daily[0].weather[0]);
@@ -190,4 +334,9 @@ $("#searchBtn").on("click", function () {
           });
       }
     });
+});
+
+// event listener to clear localStorage on cityBtn1 click
+$("#cityBtn1").on("click", function () {
+  localStorage.clear();
 });
