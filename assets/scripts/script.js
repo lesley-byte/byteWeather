@@ -13,6 +13,12 @@ console.log("I am attached to index.html");
 // the future humidity are futureHumidity1 through futureHumidity5
 // the future icons are futureIcon1 through futureIcon5
 // the future wind speeds are futureWindSpeed1 through futureWindSpeed5
+var today = dayjs().format("MM/DD/YYYY");
+var tomorrow = dayjs().add(1, "day").format("MM/DD/YYYY");
+var dayAfterTomorrow = dayjs().add(2, "day").format("MM/DD/YYYY");
+var threeDaysFromNow = dayjs().add(3, "day").format("MM/DD/YYYY");
+var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YYYY");
+
 var apiKey = "8f704084edf1f880b502675f2cdea0f6";
 var city = "London";
 var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
@@ -32,41 +38,21 @@ function writeCurrent(tempWrite) {
   $("#currentWindSpeed").text(tempWrite);
 }
 
-function writeFutureDates(tempWrite) {
-  for (var i = 1; i < 6; i++) {
-    $(`#futureDate${i}`).text(tempWrite);
-  }
+// write function to write today through 4 days from now to the DOM using futureDate1 through futureDate5
+function writeFutureDates() {
+  $("#futureDate1").text(today);
+  $("#futureDate2").text(tomorrow);
+  $("#futureDate3").text(dayAfterTomorrow);
+  $("#futureDate4").text(threeDaysFromNow);
+  $("#futureDate5").text(fourDaysFromNow);
 }
-
-function writeFutureTemps(tempWrite) {
-  for (var i = 1; i < 6; i++) {
-    $(`#futureTemp${i}`).text(tempWrite);
-  }
-}
-
-function writeFutureWindSpeeds(tempWrite) {
-  for (var i = 1; i < 6; i++) {
-    $(`#futureWindSpeed${i}`).text(tempWrite);
-  }
-}
-
-function writeFutureHumidities(tempWrite) {
-  for (var i = 1; i < 6; i++) {
-    $(`#futureHumidity${i}`).text(tempWrite);
-  }
-}
+writeFutureDates();
 
 function writeFutureIcons(tempWrite) {
   for (var i = 1; i < 6; i++) {
-    $(`#futureIcon${i}`).text(tempWrite);
+    $(`#futureIcon${i}`).text("Will be an icon");
   }
 }
-writeCityBtns(tempWrite);
-writeCurrent(tempWrite);
-writeFutureDates(tempWrite);
-writeFutureTemps(tempWrite);
-writeFutureWindSpeeds(tempWrite);
-writeFutureHumidities(tempWrite);
 writeFutureIcons(tempWrite);
 
 $("#searchBtn").on("click", function () {
@@ -74,14 +60,6 @@ $("#searchBtn").on("click", function () {
   city = tempWrite;
   console.log(tempWrite + "is being written to the DOM");
   geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
-
-  writeCityBtns(tempWrite);
-  writeCurrent(tempWrite);
-  writeFutureDates(tempWrite);
-  writeFutureTemps(tempWrite);
-  writeFutureWindSpeeds(tempWrite);
-  writeFutureHumidities(tempWrite);
-  writeFutureIcons(tempWrite);
 
   fetch(geoUrl)
     .then(function (response) {
@@ -147,7 +125,7 @@ $("#searchBtn").on("click", function () {
             var futureWindSpeed4 = data.daily[3].wind_speed;
             var futureWindSpeed5 = data.daily[4].wind_speed;
 
-            $("#currentTemp").text("The current temp: " + currentTemp);
+            $("#currentTemp").text("Current temp: " + currentTemp);
             $("#currentHumidity").text("Current Humidity: " + currentHumidity);
             $("#currentWindSpeed").text("Current Wind: " + currentWindSpeed);
             $("#futureTemp1").text("Temp: " + futureTemp1);
