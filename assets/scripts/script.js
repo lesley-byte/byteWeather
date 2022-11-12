@@ -21,7 +21,7 @@ var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YYYY");
 
 var apiKey = "8f704084edf1f880b502675f2cdea0f6";
 var city = "London";
-var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
+var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 var tempWrite = "Written to DOM";
 
 // create img element and set the src attribute to the icon url
@@ -78,10 +78,11 @@ $("#searchBtn").on("click", function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      console.log(data[0].name);
       if (data[0] === undefined || data[0] === null) {
         console.log("No data");
       } else {
+        $("#cityFocus").text(data[0].name);
         console.log(data[0].lat);
         console.log(data[0].lon);
         var lat = data[0].lat;
@@ -125,11 +126,11 @@ $("#searchBtn").on("click", function () {
             $("#futureIcon4").text(futureIcon3);
             $("#futureIcon5").text(futureIcon4);
 
-            console.log(data.daily[0]);
-            console.log(data.daily[0].weather[0]);
-            console.log(data.daily[0].weather[0].main);
-            console.log(data.daily[0].weather[0].description);
-            console.log(data.daily[0].weather[0].icon);
+            // console.log(data.daily[0]);
+            // console.log(data.daily[0].weather[0]);
+            // console.log(data.daily[0].weather[0].main);
+            // console.log(data.daily[0].weather[0].description);
+            // console.log(data.daily[0].weather[0].icon);
             // add img to currentIcon from http://openweathermap.org/img/wn/10d@2x.png
             // add img to futureIcon1 through futureIcon5 from http://openweathermap.org/img/wn/10d.png
             var img0 = document.createElement("img");
@@ -138,7 +139,8 @@ $("#searchBtn").on("click", function () {
             var img3 = document.createElement("img");
             var img4 = document.createElement("img");
             var img5 = document.createElement("img");
-
+            // console.log all properties of data to see what is available
+            console.log(data);
             var iconUrl0 = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`;
             var iconUrl1 = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}.png`;
             var iconUrl2 = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}.png`;
