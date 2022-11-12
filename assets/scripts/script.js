@@ -24,6 +24,15 @@ var city = "London";
 var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
 var tempWrite = "Written to DOM";
 
+// create img element and set the src attribute to the icon url
+// append the img element to the futureIcon1 through futureIcon5
+function writeFutureIcons2() {
+  var iconUrl = `http://openweathermap.org/img/wn/04d.png`;
+  var img = document.createElement("img");
+  img.setAttribute("src", iconUrl);
+  document.getElementById("#futureIcon1").appendChild(img);
+}
+
 function writeCityBtns(tempWrite) {
   for (var i = 0; i < 9; i++) {
     $(`#cityBtn${i}`).text(tempWrite);
@@ -121,6 +130,36 @@ $("#searchBtn").on("click", function () {
             console.log(data.daily[0].weather[0].main);
             console.log(data.daily[0].weather[0].description);
             console.log(data.daily[0].weather[0].icon);
+            // add img to currentIcon from http://openweathermap.org/img/wn/10d@2x.png
+            // add img to futureIcon1 through futureIcon5 from http://openweathermap.org/img/wn/10d.png
+            var img0 = document.createElement("img");
+            var img1 = document.createElement("img");
+            var img2 = document.createElement("img");
+            var img3 = document.createElement("img");
+            var img4 = document.createElement("img");
+            var img5 = document.createElement("img");
+
+            var iconUrl0 = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`;
+            var iconUrl1 = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}.png`;
+            var iconUrl2 = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}.png`;
+            var iconUrl3 = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}.png`;
+            var iconUrl4 = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}.png`;
+            var iconUrl5 = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}.png`;
+
+            img0.src = iconUrl0;
+            img1.src = iconUrl1;
+            img2.src = iconUrl2;
+            img3.src = iconUrl3;
+            img4.src = iconUrl4;
+            img5.src = iconUrl5;
+
+            $("#currentIcon").append(img0);
+            $("#futureIcon1").append(img1);
+            $("#futureIcon2").append(img2);
+            $("#futureIcon3").append(img3);
+            $("#futureIcon4").append(img4);
+            $("#futureIcon5").append(img5);
+
             $("#currentTemp").text("Current temp: " + currentTemp);
             $("#currentHumidity").text("Current Humidity: " + currentHumidity);
             $("#currentWindSpeed").text("Current Wind: " + currentWindSpeed);
