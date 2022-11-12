@@ -78,11 +78,16 @@ $("#searchBtn").on("click", function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data[0].name);
+      console.log(data);
       if (data[0] === undefined || data[0] === null) {
         console.log("No data");
       } else {
-        $("#cityFocus").text(data[0].name);
+        var chosenCity = data[0].name;
+        var chosenState = data[0].state;
+        var chosenCountry = data[0].country;
+        $("#cityFocus").text(
+          chosenCity + ", " + chosenState + ", " + chosenCountry
+        );
         console.log(data[0].lat);
         console.log(data[0].lon);
         var lat = data[0].lat;
