@@ -86,26 +86,6 @@ $("#searchBtn").on("click", function () {
             return response.json();
           })
           .then(function (data) {
-            console.log(data);
-            console.log(data.current.temp);
-            console.log(data.current.humidity);
-            console.log(data.current.wind_speed);
-            console.log(data.daily[0].temp.day);
-            console.log(data.daily[0].humidity);
-            console.log(data.daily[0].wind_speed);
-            console.log(data.daily[1].temp.day);
-            console.log(data.daily[1].humidity);
-            console.log(data.daily[1].wind_speed);
-            console.log(data.daily[2].temp.day);
-            console.log(data.daily[2].humidity);
-            console.log(data.daily[2].wind_speed);
-            console.log(data.daily[3].temp.day);
-            console.log(data.daily[3].humidity);
-            console.log(data.daily[3].wind_speed);
-            console.log(data.daily[4].temp.day);
-            console.log(data.daily[4].humidity);
-            console.log(data.daily[4].wind_speed);
-
             var currentTemp = data.current.temp;
             var currentHumidity = data.current.humidity;
             var currentWindSpeed = data.current.wind_speed;
@@ -124,7 +104,23 @@ $("#searchBtn").on("click", function () {
             var futureWindSpeed3 = data.daily[2].wind_speed;
             var futureWindSpeed4 = data.daily[3].wind_speed;
             var futureWindSpeed5 = data.daily[4].wind_speed;
+            var currentIcon = data.current.weather[0].description;
+            var futureIcon1 = data.daily[0].weather[0].description;
+            var futureIcon2 = data.daily[1].weather[0].description;
+            var futureIcon3 = data.daily[2].weather[0].description;
+            var futureIcon4 = data.daily[3].weather[0].description;
+            $("#currentIcon").text(currentIcon);
+            $("#futureIcon1").text(currentIcon);
+            $("#futureIcon2").text(futureIcon1);
+            $("#futureIcon3").text(futureIcon2);
+            $("#futureIcon4").text(futureIcon3);
+            $("#futureIcon5").text(futureIcon4);
 
+            console.log(data.daily[0]);
+            console.log(data.daily[0].weather[0]);
+            console.log(data.daily[0].weather[0].main);
+            console.log(data.daily[0].weather[0].description);
+            console.log(data.daily[0].weather[0].icon);
             $("#currentTemp").text("Current temp: " + currentTemp);
             $("#currentHumidity").text("Current Humidity: " + currentHumidity);
             $("#currentWindSpeed").text("Current Wind: " + currentWindSpeed);
@@ -143,6 +139,8 @@ $("#searchBtn").on("click", function () {
             $("#futureWindSpeed3").text("Wind: " + futureWindSpeed3);
             $("#futureWindSpeed4").text("Wind: " + futureWindSpeed4);
             $("#futureWindSpeed5").text("Wind: " + futureWindSpeed5);
+
+            console.log(data);
           });
       }
     });
