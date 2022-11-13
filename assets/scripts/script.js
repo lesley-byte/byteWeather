@@ -216,9 +216,9 @@ function searchingClick(city) {
             $("#cityBtn8").text(chosenCity);
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           } else {
-            cityBtns.cityBtn1 = chosenCity;
-            $("#cityBtn1").show();
-            $("#cityBtn1").text(chosenCity);
+            cityBtns.cityBtn8 = chosenCity;
+            $("#cityBtn8").show();
+            $("#cityBtn8").text(chosenCity);
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           }
         }
