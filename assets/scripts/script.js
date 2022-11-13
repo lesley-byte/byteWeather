@@ -132,9 +132,7 @@ function writeFutureIcons(tempWrite) {
 }
 writeFutureIcons(tempWrite);
 
-$("#searchBtn").on("click", function () {
-  var tempWrite = $("#formInput").val();
-  city = tempWrite;
+function searchingClick(city) {
   console.log(tempWrite + "is being written to the DOM");
   geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
 
@@ -334,9 +332,63 @@ $("#searchBtn").on("click", function () {
           });
       }
     });
+}
+
+// get text for cityBtn1
+// get text for cityBtn2
+// get text for cityBtn3
+// get text for cityBtn4
+// get text for cityBtn5
+// get text for cityBtn6
+// get text for cityBtn7
+// get text for cityBtn8
+
+// console.log cityBtn1 through cityBtn8
+
+// add click event to cityBtn1 through cityBtn8
+
+$("#cityBtn1").on("click", function () {
+  var city = $("#cityBtn1").text();
+  searchingClick(city);
 });
 
-// event listener to clear localStorage on cityBtn1 click
-$("#cityBtn1").on("click", function () {
-  localStorage.clear();
+$("#cityBtn2").on("click", function () {
+  var city = $("#cityBtn2").text();
+  searchingClick(city);
 });
+
+$("#cityBtn3").on("click", function () {
+  var city = $("#cityBtn3").text();
+  searchingClick(city);
+});
+
+$("#cityBtn4").on("click", function () {
+  var city = $("#cityBtn4").text();
+  searchingClick(city);
+});
+
+$("#cityBtn5").on("click", function () {
+  var city = $("#cityBtn5").text();
+  searchingClick(city);
+});
+
+$("#cityBtn6").on("click", function () {
+  var city = $("#cityBtn6").text();
+  searchingClick(city);
+});
+
+$("#cityBtn7").on("click", function () {
+  var city = $("#cityBtn7").text();
+  searchingClick(city);
+});
+
+$("#cityBtn8").on("click", function () {
+  var city = $("#cityBtn8").text();
+  searchingClick(city);
+});
+
+$("#searchBtn").on("click", function () {
+  var city = $("#formInput").val();
+  searchingClick(city);
+});
+// add click event to searchBtn
