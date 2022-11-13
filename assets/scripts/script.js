@@ -216,6 +216,22 @@ function searchingClick(city) {
             $("#cityBtn8").text(chosenCity);
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           } else {
+            // move the cityBtns up one and write the chosen city to the last cityBtn
+            // cityBtns.cityBtn1 = cityBtns.cityBtn2;
+            $("#cityBtn1").text(cityBtns.cityBtn1);
+            cityBtns.cityBtn2 = cityBtns.cityBtn3;
+            $("#cityBtn2").text(cityBtns.cityBtn2);
+            cityBtns.cityBtn3 = cityBtns.cityBtn4;
+            $("#cityBtn3").text(cityBtns.cityBtn3);
+            cityBtns.cityBtn4 = cityBtns.cityBtn5;
+            $("#cityBtn4").text(cityBtns.cityBtn4);
+            cityBtns.cityBtn5 = cityBtns.cityBtn6;
+            $("#cityBtn5").text(cityBtns.cityBtn5);
+            cityBtns.cityBtn6 = cityBtns.cityBtn7;
+            $("#cityBtn6").text(cityBtns.cityBtn6);
+            cityBtns.cityBtn7 = cityBtns.cityBtn8;
+            $("#cityBtn7").text(cityBtns.cityBtn7);
+
             cityBtns.cityBtn8 = chosenCity;
             $("#cityBtn8").show();
             $("#cityBtn8").text(chosenCity);
