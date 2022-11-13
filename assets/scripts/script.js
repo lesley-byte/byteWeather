@@ -218,6 +218,7 @@ function searchingClick(city) {
           } else {
             // move the cityBtns up one and write the chosen city to the last cityBtn
             // cityBtns.cityBtn1 = cityBtns.cityBtn2;
+            cityBtns.cityBtn1 = cityBtns.cityBtn2;
             $("#cityBtn1").text(cityBtns.cityBtn1);
             cityBtns.cityBtn2 = cityBtns.cityBtn3;
             $("#cityBtn2").text(cityBtns.cityBtn2);
