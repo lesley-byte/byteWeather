@@ -6,12 +6,14 @@ A template for new coding bootcamp projects to make setup faster and easier.
 
 ## Usage
 
-Use this when starting a new project.  It will create a directory structure and a README.md file with some basic information.
+Use this when starting a new project. It will create a directory structure and a README.md file with some basic information.
 
 ## Link to Deployed Application
-[Deployed Application]()
+
+[Deployed Application](https://lesley-byte.github.io/byteWeather/)
 
 ## Screenshot
+
 ![Screenshot](./assets/images/screenshot.png)
 
 ## Testing
@@ -23,6 +25,7 @@ Check if its up to date occasionally
 Mit License
 
 ## Badges
+
 ![bootcamp Education](https://img.shields.io/badge/bootcamp-Education-red)
 
 ![JQuery Project](https://img.shields.io/badge/JQuery-Project-ff69b4)
