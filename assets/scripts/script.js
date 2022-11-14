@@ -1,22 +1,5 @@
 // I guess this will be jquery
 console.log("I am attached to index.html");
-
-// ids for the buttons
-// the search button is searchBtn
-//the city buttons are cityBtn1 through cityBtn8
-// the City in focus text field is cityFocus
-// the current temp text field is currentTemp
-// the current humidity text field is currentHumidity
-// the current wind speed text field is currentWindSpeed
-// the future dates are futureDate1 through futureDate5
-// the future temps are futureTemp1 through futureTemp5
-// the future humidity are futureHumidity1 through futureHumidity5
-// the future icons are futureIcon1 through futureIcon5
-// the future wind speeds are futureWindSpeed1 through futureWindSpeed5
-
-// get local storage object if it exists if it doesn't exist then create it and use ctyBtn1 through cityBtn8 as the keys with a value of ""
-// write the values to the DOM using writeCityBtns
-// if the value is "" then write "City" to the DOM
 function writeCityBtnsFromLocalStorage() {
   // get local storage object
   var cityBtns = JSON.parse(localStorage.getItem("cityBtns"));
@@ -35,47 +18,15 @@ function writeCityBtnsFromLocalStorage() {
     };
   } else {
     // write the values to the DOM
-    $("#cityBtn1").text(cityBtns.cityBtn1);
-    $("#cityBtn2").text(cityBtns.cityBtn2);
-    $("#cityBtn3").text(cityBtns.cityBtn3);
-    $("#cityBtn4").text(cityBtns.cityBtn4);
-    $("#cityBtn5").text(cityBtns.cityBtn5);
-    $("#cityBtn6").text(cityBtns.cityBtn6);
-    $("#cityBtn7").text(cityBtns.cityBtn7);
-    $("#cityBtn8").text(cityBtns.cityBtn8);
+    for (var i = 1; i < 9; i++) {
+      $("#cityBtn" + i).text(cityBtns["cityBtn" + i]);
+    }
   }
-  // if the value is "" then write "City" to the DOM
-  if (cityBtns.cityBtn1 === "") {
-    $("#cityBtn1").hide();
-    console.log("cityBtn1 is empty");
-  }
-  if (cityBtns.cityBtn2 === "") {
-    $("#cityBtn2").hide();
-    console.log("cityBtn2 is empty");
-  }
-  if (cityBtns.cityBtn3 === "") {
-    $("#cityBtn3").hide();
-    console.log("cityBtn3 is empty");
-  }
-  if (cityBtns.cityBtn4 === "") {
-    $("#cityBtn4").hide();
-    console.log("cityBtn4 is empty");
-  }
-  if (cityBtns.cityBtn5 === "") {
-    $("#cityBtn5").hide();
-    console.log("cityBtn5 is empty");
-  }
-  if (cityBtns.cityBtn6 === "") {
-    $("#cityBtn6").hide();
-    console.log("cityBtn6 is empty");
-  }
-  if (cityBtns.cityBtn7 === "") {
-    $("#cityBtn7").hide();
-    console.log("cityBtn7 is empty");
-  }
-  if (cityBtns.cityBtn8 === "") {
-    $("#cityBtn8").hide();
-    console.log("cityBtn8 is empty");
+  // if the value is "" then write "City" to the DOM'
+  for (let i = 1; i < 9; i++) {
+    if (cityBtns["cityBtn" + i] === "") {
+      $("#cityBtn" + i).hide();
+    }
   }
 }
 
@@ -86,34 +37,10 @@ var tomorrow = dayjs().add(1, "day").format("MM/DD/YYYY");
 var dayAfterTomorrow = dayjs().add(2, "day").format("MM/DD/YYYY");
 var threeDaysFromNow = dayjs().add(3, "day").format("MM/DD/YYYY");
 var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YYYY");
-
+$("#cityFocus").text(today);
 var apiKey = "8f704084edf1f880b502675f2cdea0f6";
-var city = "London";
+var city = "";
 var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
-var tempWrite = "Written to DOM";
-
-// create img element and set the src attribute to the icon url
-// append the img element to the futureIcon1 through futureIcon5
-function writeFutureIcons2() {
-  var iconUrl = `http://openweathermap.org/img/wn/04d.png`;
-  var img = document.createElement("img");
-  img.setAttribute("src", iconUrl);
-  document.getElementById("#futureIcon1").appendChild(img);
-}
-
-function writeCityBtns(tempWrite) {
-  for (var i = 0; i < 9; i++) {
-    $(`#cityBtn${i}`).text(tempWrite);
-  }
-}
-
-function writeCurrent(tempWrite) {
-  $("#cityFocus").text(tempWrite);
-  $("#currentIcon").text(tempWrite);
-  $("#currentTemp").text(tempWrite);
-  $("#currentHumidity").text(tempWrite);
-  $("#currentWindSpeed").text(tempWrite);
-}
 
 // write function to write today through 4 days from now to the DOM using futureDate1 through futureDate5
 function writeFutureDates() {
@@ -125,15 +52,7 @@ function writeFutureDates() {
 }
 writeFutureDates();
 
-function writeFutureIcons(tempWrite) {
-  for (var i = 1; i < 6; i++) {
-    $(`#futureIcon${i}`).text("Will be an icon");
-  }
-}
-writeFutureIcons(tempWrite);
-
 function searchingClick(city) {
-  console.log(tempWrite + "is being written to the DOM");
   geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
 
   fetch(geoUrl)
@@ -151,10 +70,6 @@ function searchingClick(city) {
         var chosenCity = data[0].name;
         var chosenState = data[0].state;
         var chosenCountry = data[0].country;
-
-        // write the chosen city to the first non-empty cityBtn in local storage
-        // if all cityBtns are full then overwrite the first cityBtn
-        // write the chosen city to the DOM
         function writeCityBtnsToLocalStorage(chosenCity) {
           // get local storage object
           var cityBtns = JSON.parse(localStorage.getItem("cityBtns"));
@@ -217,21 +132,10 @@ function searchingClick(city) {
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           } else {
             // move the cityBtns up one and write the chosen city to the last cityBtn
-            // cityBtns.cityBtn1 = cityBtns.cityBtn2;
-            cityBtns.cityBtn1 = cityBtns.cityBtn2;
-            $("#cityBtn1").text(cityBtns.cityBtn1);
-            cityBtns.cityBtn2 = cityBtns.cityBtn3;
-            $("#cityBtn2").text(cityBtns.cityBtn2);
-            cityBtns.cityBtn3 = cityBtns.cityBtn4;
-            $("#cityBtn3").text(cityBtns.cityBtn3);
-            cityBtns.cityBtn4 = cityBtns.cityBtn5;
-            $("#cityBtn4").text(cityBtns.cityBtn4);
-            cityBtns.cityBtn5 = cityBtns.cityBtn6;
-            $("#cityBtn5").text(cityBtns.cityBtn5);
-            cityBtns.cityBtn6 = cityBtns.cityBtn7;
-            $("#cityBtn6").text(cityBtns.cityBtn6);
-            cityBtns.cityBtn7 = cityBtns.cityBtn8;
-            $("#cityBtn7").text(cityBtns.cityBtn7);
+            for (let i = 1; i < 8; i++) {
+              cityBtns["cityBtn" + i] = cityBtns["cityBtn" + (i + 1)];
+              $("#cityBtn" + i).text(cityBtns["cityBtn" + i]);
+            }
 
             cityBtns.cityBtn8 = chosenCity;
             $("#cityBtn8").show();
@@ -244,7 +148,7 @@ function searchingClick(city) {
         writeCityBtnsToLocalStorage(chosenCity);
 
         $("#cityFocus").text(
-          chosenCity + ", " + chosenState + ", " + chosenCountry
+          chosenCity + ", " + chosenState + ", " + chosenCountry + " " + today
         );
         console.log(data[0].lat);
         console.log(data[0].lon);
@@ -290,13 +194,6 @@ function searchingClick(city) {
             $("#futureIcon4").text(futureIcon4);
             $("#futureIcon5").text(futureIcon5);
 
-            // console.log(data.daily[0]);
-            // console.log(data.daily[0].weather[0]);
-            // console.log(data.daily[0].weather[0].main);
-            // console.log(data.daily[0].weather[0].description);
-            // console.log(data.daily[0].weather[0].icon);
-            // add img to currentIcon from http://openweathermap.org/img/wn/10d@2x.png
-            // add img to futureIcon1 through futureIcon5 from http://openweathermap.org/img/wn/10d.png
             var img0 = document.createElement("img");
             var img1 = document.createElement("img");
             var img2 = document.createElement("img");
@@ -329,11 +226,11 @@ function searchingClick(city) {
             $("#currentTemp").text("Current temp: " + currentTemp);
             $("#currentHumidity").text("Current Humidity: " + currentHumidity);
             $("#currentWindSpeed").text("Current Wind: " + currentWindSpeed);
-            $("#futureTemp1").text("Temp: " + futureTemp1);
-            $("#futureTemp2").text("Temp: " + futureTemp2);
-            $("#futureTemp3").text("Temp: " + futureTemp3);
-            $("#futureTemp4").text("Temp: " + futureTemp4);
-            $("#futureTemp5").text("Temp: " + futureTemp5);
+            $("#futureTemp1").text("Afternoon Temp: " + futureTemp1);
+            $("#futureTemp2").text("Afternoon Temp: " + futureTemp2);
+            $("#futureTemp3").text("Afternoon Temp: " + futureTemp3);
+            $("#futureTemp4").text("Afternoon Temp: " + futureTemp4);
+            $("#futureTemp5").text("TAfternoon Temp: " + futureTemp5);
             $("#futureHumidity1").text("Humidity: " + futureHumidity1);
             $("#futureHumidity2").text("Humidity: " + futureHumidity2);
             $("#futureHumidity3").text("Humidity: " + futureHumidity3);
@@ -350,17 +247,6 @@ function searchingClick(city) {
       }
     });
 }
-
-// get text for cityBtn1
-// get text for cityBtn2
-// get text for cityBtn3
-// get text for cityBtn4
-// get text for cityBtn5
-// get text for cityBtn6
-// get text for cityBtn7
-// get text for cityBtn8
-
-// console.log cityBtn1 through cityBtn8
 
 // add click event to cityBtn1 through cityBtn8
 
