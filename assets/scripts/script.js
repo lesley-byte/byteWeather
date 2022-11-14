@@ -230,7 +230,7 @@ function searchingClick(city) {
             $("#futureTemp2").text("Afternoon Temp: " + futureTemp2);
             $("#futureTemp3").text("Afternoon Temp: " + futureTemp3);
             $("#futureTemp4").text("Afternoon Temp: " + futureTemp4);
-            $("#futureTemp5").text("TAfternoon Temp: " + futureTemp5);
+            $("#futureTemp5").text("Afternoon Temp: " + futureTemp5);
             $("#futureHumidity1").text("Humidity: " + futureHumidity1);
             $("#futureHumidity2").text("Humidity: " + futureHumidity2);
             $("#futureHumidity3").text("Humidity: " + futureHumidity3);
