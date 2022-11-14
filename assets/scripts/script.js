@@ -27,10 +27,29 @@ function writeCityBtnsFromLocalStorage() {
     if (cityBtns["cityBtn" + i] === "") {
       $("#cityBtn" + i).hide();
     }
+  } // return text of cityBtns.cityBtn1
+
+  var lastCityVisited = "";
+  function lastCity() {
+    for (let i = 8; i > 0; i--) {
+      if (cityBtns["cityBtn" + i] === "") {
+        console.log("cityBtn" + i + " is empty");
+      } else if (lastCityVisited !== "") {
+        console.log("lastCityVisited is not empty");
+      } else {
+        lastCityVisited = cityBtns["cityBtn" + i];
+        console.log("lastCityVisited is " + lastCityVisited);
+        cityBtns["cityBtn" + i] = "";
+        // $("#cityBtn" + i).text("");
+        // $("#cityBtn" + i).hide();
+      }
+    }
+    return lastCityVisited;
   }
+  return lastCity();
 }
 
-writeCityBtnsFromLocalStorage();
+var city = writeCityBtnsFromLocalStorage();
 
 var today = dayjs().format("MM/DD/YYYY");
 var tomorrow = dayjs().add(1, "day").format("MM/DD/YYYY");
@@ -39,7 +58,7 @@ var threeDaysFromNow = dayjs().add(3, "day").format("MM/DD/YYYY");
 var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YYYY");
 $("#cityFocus").text(today);
 var apiKey = "8f704084edf1f880b502675f2cdea0f6";
-var city = "";
+
 var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
 // write function to write today through 4 days from now to the DOM using futureDate1 through futureDate5
@@ -52,7 +71,7 @@ function writeFutureDates() {
 }
 writeFutureDates();
 
-function searchingClick(city) {
+function searchingClick(city, remember) {
   geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`;
 
   fetch(geoUrl)
@@ -132,14 +151,18 @@ function searchingClick(city) {
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           } else {
             // move the cityBtns up one and write the chosen city to the last cityBtn
-            for (let i = 1; i < 8; i++) {
-              cityBtns["cityBtn" + i] = cityBtns["cityBtn" + (i + 1)];
-              $("#cityBtn" + i).text(cityBtns["cityBtn" + i]);
-            }
+            if (remember) {
+              for (let i = 1; i < 8; i++) {
+                cityBtns["cityBtn" + i] = cityBtns["cityBtn" + (i + 1)];
+                $("#cityBtn" + i).text(cityBtns["cityBtn" + i]);
+              }
 
-            cityBtns.cityBtn8 = chosenCity;
-            $("#cityBtn8").show();
-            $("#cityBtn8").text(chosenCity);
+              cityBtns.cityBtn8 = chosenCity;
+              $("#cityBtn8").show();
+              $("#cityBtn8").text(chosenCity);
+            } else {
+              console.log("remember is false");
+            }
             localStorage.setItem("cityBtns", JSON.stringify(cityBtns));
           }
         }
@@ -248,50 +271,51 @@ function searchingClick(city) {
     });
 }
 
+searchingClick(city, false);
 // add click event to cityBtn1 through cityBtn8
 
 $("#cityBtn1").on("click", function () {
   var city = $("#cityBtn1").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn2").on("click", function () {
   var city = $("#cityBtn2").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn3").on("click", function () {
   var city = $("#cityBtn3").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn4").on("click", function () {
   var city = $("#cityBtn4").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn5").on("click", function () {
   var city = $("#cityBtn5").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn6").on("click", function () {
   var city = $("#cityBtn6").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn7").on("click", function () {
   var city = $("#cityBtn7").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#cityBtn8").on("click", function () {
   var city = $("#cityBtn8").text();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 
 $("#searchBtn").on("click", function () {
   var city = $("#formInput").val();
-  searchingClick(city);
+  searchingClick(city, true);
 });
 // add click event to searchBtn
