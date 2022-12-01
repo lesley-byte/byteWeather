@@ -42,23 +42,8 @@
                     </div>
                     <button type="button" class="btn btn-primary custom-btn-primary btn-md btn-block"
                         id="searchBtn">Search</button>
-                    <div class="container border-top my-3 "></div>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn8">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn7">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn6">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn5">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn4">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn3">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn2">city</button>
-                    <button type="button" class="btn btn-secondary custom-btn-secondary btn-md btn-block"
-                        id="cityBtn1">city</button>
+                    <div class="container border-top my-3 p-0 list-group" id="history"></div>
+                   
                 </form>
             </div>
             <div class="container"></div>
@@ -67,7 +52,8 @@
             <div class="container">
                 <div class="card border border-dark">
                     <div class="card-body">
-                        <h5 class="card-title custom-city-card" id="cityFocus">City in focus</h5>
+                        <h5 class="card-title custom-city-card"><span id="cityInFocus">City in focus</span><span id="cityFocus"></span></h5>
+                        <h6 class="card-subtitle mb-2 text-muted custom-date-card" id="actualCity"></h6>
                         <p class="card-text custom-date-card" id="currentIcon">Icon</p>
                         <p class="card-text" id="currentTemp">Temp: </p>
                         <p class="card-text" id="currentWindSpeed">Wind: </p>
@@ -144,7 +130,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>dayjs().format()</script>
 
-    <script src="./assets/scripts/script.js"></script>
+    <script src="./assets/scripts/newScript.js"></script>
 </body>
 
 </html>
