@@ -1,10 +1,10 @@
 var city = "";
 var arrayOfCities = [];
-var today = (dayjs().format("MM/DD/YYYY") + " " + city);
-var tomorrow = dayjs().add(1, "day").format("MM/DD/YYYY");
-var dayAfterTomorrow = dayjs().add(2, "day").format("MM/DD/YYYY");
-var threeDaysFromNow = dayjs().add(3, "day").format("MM/DD/YYYY");
-var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YYYY");
+var today = (dayjs().format("MM/DD/YY") + " " + city);
+var tomorrow = dayjs().add(1, "day").format("MM/DD/YY");
+var dayAfterTomorrow = dayjs().add(2, "day").format("MM/DD/YY");
+var threeDaysFromNow = dayjs().add(3, "day").format("MM/DD/YY");
+var fourDaysFromNow = dayjs().add(4, "day").format("MM/DD/YY");
 
 function getLocalStorage() {
     try {
@@ -234,6 +234,13 @@ $(".list-group").on("click", function (event) {
     $("#cityFocus").text(city);
     });
 
+    // if history is longer than screen, add scroll bar
+    if ($("#history").height() > $(window).height()) {
+        $("#history").css("overflow-y", "scroll");
+    }
 
-
+// if class card is longer than screen, add scroll bar
+if ($(".card").height() > $(window).height()) {
+    $(".card").css("overflow-y", "scroll");
+}
 
