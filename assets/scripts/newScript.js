@@ -84,6 +84,14 @@ function getLonLat(city) {
             console.log("No data");
           } else {
       console.log(data);
+      var name = data[0].name;
+      var state = data[0].state;
+        var country = data[0].country;
+        console.log("name: " + name);
+        console.log("state: " + state);
+        console.log("country: " + country);
+        // add state and country text to h6 element
+        $("#actualCity").text(state + ", " + country);
       lat = data[0].lat;
       lon = data[0].lon;
       latLonUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`;
